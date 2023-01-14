@@ -1,8 +1,11 @@
 import express, { json } from "express";
 import { initialize } from "./repository.mjs";
 import routes from "./routes.mjs";
+import cors from "cors";
 
 const app = express();
+app.use(cors());
+app.options("*", cors());
 app.use(json());
 app.use("/api/workouts", routes);
 
